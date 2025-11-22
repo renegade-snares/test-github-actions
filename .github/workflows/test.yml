@@ -11,10 +11,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: test-app
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,8 +22,11 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pwd
+          cd test-app
           npm ci
 
       - name: Run tests
         run: |
+          cd test-app
           npm test
